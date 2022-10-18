@@ -31,11 +31,15 @@ def get_products_from_category(params):
             elif pages < 1:
                 pages = 1
             for i in range(1, int(pages)):
-                url_category = f'https://catalog.wb.ru/catalog/{params["shard"]}/catalog?appType=1&curr=rub&kind=2&lang=ru&locale=ru&pricemarginCoeff=1.0&reg=0&sort=sale&page={i}&{params["query"]}'
+                url_category =f"https://catalog.wb.ru/catalog/{params['shard']}/catalog?appType=1&couponsGeo=2,7,3,6,19,21,8&curr=rub&emp=0&lang=ru&locale=ru&page={i}&pricemarginCoeff=1.0&sort=sale&spp=0&{params['query']}"
+                # url_category = f'https://catalog.wb.ru/catalog/{params["shard"]}/catalog?appType=1&curr=rub&kind=2&lang=ru&locale=ru&pricemarginCoeff=1.0&reg=0&sort=sale&page={i}&{params["query"]}'
                 pr_list = get_html(url_category)
                 json_prods = json.loads(pr_list)
-                for product in json_prods['data']['products']:
-                    category_products.append(product)
+                if json_prods['data']['products']:
+                    for product in json_prods['data']['products']:
+                        category_products.append(product)
+                else:
+                    print(url_category)
         except Exception:
                 traceback.print_exc()
         s = session()

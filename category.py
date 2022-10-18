@@ -20,20 +20,24 @@ class Category():
         for item in menu:
             if item['id'] in except_men_items:
                 for child in item['childs']:
-                    if 'childs' in child:
-                        for ch in child['childs']:
-                            link = {
-                                'shard': ch['shard'],
-                                'query': ch['query']
-                            }
-                            links.append(link)
-                    else:
-                        for child in item['childs']:
+                    # pprint.pprint(child)
+                    # if 'childs' in child:
+                    #     for ch in child['childs']:
+                    #         link = {
+                    #             'shard': ch['shard'],
+                    #             'query': ch['query']
+                    #         }
+                    #         links.append(link)
+                    # else:
+                    #     for child in item['childs']:
+
                             link = {
                                 'shard': child['shard'],
-                                'query': child['query']
+                                'query': child['query'],
+                                'name':child['name']
                             }
 
                             links.append(link)
-        random.shuffle(links)
+        # random.shuffle(links)
+        pprint.pprint(links)
         return links

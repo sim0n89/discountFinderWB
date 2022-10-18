@@ -6,7 +6,7 @@ from config import host, USER, passwd, database, port
 import datetime
 
 # conn = "mysql+mysqlconnector://{0}:{1}@{2}:{3}/{4}?unix_socket=/var/run/mysqld/mysqld.sock".format(DB_USER, passwd,
-
+#                                                                                                    host, port, database)
 
 conn = "mysql+mysqlconnector://{0}:{1}@{2}:{3}/{4}".format(USER, passwd, host, port, database)
 engine = create_engine(conn)
