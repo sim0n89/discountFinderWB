@@ -38,7 +38,8 @@ def check_products(products, s):
                         if check_root<1:
                             prods["average"] = average['average']
                             price_history = get_price_history(prods['id'])
-                            img = get_image(prods['id'])
+                            id_c = str(prods['id'])[:-4]
+                            img = f"https://images.wbstatic.net/c516x688/new/{id_c}0000/{prods['id']}-1.jpg"
                             if 'max' in price_history:
                                 prods['price_max'] = price_history['max']
                             else:
@@ -48,8 +49,8 @@ def check_products(products, s):
                             else:
                                 prods['price_min'] = 0
                             prods['stock'] =  get_stock(prods['id'])
-                            prods['image'] = "https:" + img['image']
-                            prods['name'] = prods['brand'] + "/" + img['name']
+                            prods['image'] = img
+                            prods['name'] = prods['brand'] + "/" + prods['name']
                             new_root = Root(root=prods['root'])
 
 
